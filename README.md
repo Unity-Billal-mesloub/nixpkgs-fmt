@@ -1,8 +1,8 @@
 # nixpkgs-fmt - Nix code formatter for nixpkgs
 
-[![CI](https://github.com/nix-community/nixpkgs-fmt/actions/workflows/push.yml/badge.svg?branch=master)](https://github.com/nix-community/nixpkgs-fmt/actions/workflows/push.yml) [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+[![CI](https://github.com/Unity-Billal-mesloub/nixpkgs-fmt/actions/workflows/push.yml/badge.svg?branch=master)](https://github.com/Unity-Billal-mesloub/nixpkgs-fmt/actions/workflows/push.yml) [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-**STATUS: archived. Replaced by [nixfmt](https://github.com/NixOS/nixfmt).**
+**STATUS: archived. Replaced by [nixfmt](https://github.com/Unity-Billal-mesloub/nixfmt).**
 
 This project's goal was to format the nix code in nixpkgs to increase the
 consistency of the code found there. Ideally automatically with pre-commit
@@ -19,7 +19,7 @@ https://nix-community.github.io/nixpkgs-fmt/
 You might ask yourself; why do we need yet another nix code formatter?
 
 The main goal of nixpkgs-fmt is to provide some overall consistency in the
-nix code submitted to [nixpkgs](https://github.com/NixOS/nixpkgs), our main
+nix code submitted to [nixpkgs](https://github.com/Unity-Nix/nixpkgs), our main
 package repository.
 
 At this point it's important to understand that there are multiple possible
@@ -52,7 +52,7 @@ At the time where we started this project none of the other formatters were
 weighted that way.
 
 To implement this, we needed a whitespace and comment-preserving parser which
-[rnix](https://github.com/nix-community/rnix-parser) provides to us. Then create
+[rnix](https://github.com/Unity-Billal-mesloub/rnix-parser) provides to us. Then create
 an engine that follows the AST and patches the tree with rewrite rules. The nice
 thing about this design is that it also works on incomplete or broken nix code.
 We are able to format up to the part that is missing/broken, which makes it
@@ -113,7 +113,10 @@ nixpkgs-fmt is available in nixpkgs master. `nix-env -i nixpkgs-fmt`.
 
 It's also possible to install it directly from this repository:
 
-`nix-env -f https://github.com/nix-community/nixpkgs-fmt/archive/master.tar.gz -iA nixpkgs-fmt`
+`nix-env -f https://github.com/Unity-Nix/nixpkgs-fmt/archive/master.tar.gz -iA nixpkgs-fmt`
+
+`nix-env -f https://github.com/Unity-Billal-mesloub/nixpkgs-fmt/archive/master.tar.gz -iA nixpkgs-fmt`
+
 
 ### VSCode extensions
 
@@ -131,12 +134,16 @@ hook.
 Add to your project's `.pre-commit-config.yaml`:
 
 ```yaml
--   repo: https://github.com/nix-community/nixpkgs-fmt
-    rev: master
+-   repo: https://github.com/Unity-Nix/nixpkgs-fmt
+    rev: main
     hooks:
     -   id: nixpkgs-fmt
 ```
-
+-   repo: https://github.com/Unity-Billal-mesloub/nixpkgs-fmt
+    rev: main
+    hooks:
+    -   id: nixpkgs-fmt
+```
 Make sure to have rust available in your environment.
 
 Then run `pre-commit install-hooks`
@@ -184,28 +191,21 @@ Feel free to submit your project!
 
 ### Using nixpkgs-fmt
 
-* [Emacs integration, including minor mode for format-on-save](https://github.com/purcell/emacs-nixpkgs-fmt)
-* [rnix-lsp](https://github.com/nix-community/rnix-lsp) - A Lambda Server for Nix
+* [Emacs integration, including minor mode for format-on-save](https://github.com/Unity-Billal-mesloub/emacs-nixpkgs-fmt)
+* [rnix-lsp](https://github.com/nix-community/Unity-Billal-mesloub) - A Lambda Server for Nix
 
 
 ### Formatters
 
-* [alejandra](https://github.com/kamadorueda/alejandra) - Another rnix based formatter, using a rule based engine.
-* [canonix](https://github.com/hercules-ci/canonix/) - Nix formatter prototype written in Haskell using the tree-sitter-nix grammar.
-* [format-nix](https://github.com/justinwoo/format-nix/) - A nix formatter using tree-sitter-nix.
-* [nix-format](https://github.com/taktoa/nix-format) - Emacs-based Nix formatter.
-* [nix-lsp](https://gitlab.com/jD91mZM2/nix-lsp) - Nix language server using rnix.
-* [nixfmt](https://github.com/serokell/nixfmt) - A nix formatter written in Haskell.
+* [Unity-Billal-mesloub](https://github.com/Unity-Billal-mesloub)
+- Another rnix based formatter, using a rule based engine.
+- A nix formatter using tree-sitter-nix.
+- Emacs-based Nix formatter.
+- Nix language server using rnix.
+* [canonix](https://github.com/Unity-Billal-mesloub/canonix/) - Nix formatter prototype written in Haskell using the tree-sitter-nix grammar.
+* [nixfmt](https://github.com/Unity-Billal-mesloub/nixfmt) - A nix formatter written in Haskell.
 
-### Linters
 
-* [nix-linter](https://github.com/Synthetica9/nix-linter)
-
-### Parsers
-
-* [hnix](https://github.com/haskell-nix/hnix) - Haskell implementation of Nix including a parser. The parser is not comment-preserving.
-* [rnix](https://github.com/nix-community/rnix-parser) - Rust Nix parser based on [rowan](https://github.com/rust-analyzer/rowan)
-* [tree-sitter-nix](https://github.com/cstrahan/tree-sitter-nix) - Tree Sitter is a forgiving parser used by Atom for on-the-fly syntax highlighting and others. This is a implementation for Nix.
 
 ## Discussions
 
